@@ -1,0 +1,41 @@
+<% @evenements.each do |evenement| %>
+    <% if evenement.user.idfacebook
+         @id = evenement.user.idfacebook
+         url = "https://graph.facebook.com/"+@id.to_s+"/picture"
+       else
+         url = "/images/profile.jpg"
+       end
+
+    %>
+
+    <div id="evenement" onmouseover="jQuery('#share').show(); jQuery('#btn').show();" onmouseout="jQuery('#share').hide(); jQuery('#btn').hide();">
+      <div class="date">
+        <% dt = evenement.date.to_date.to_formatted_s(:rfc822)
+           tab = dt.split(" ")
+           jour = tab[0]
+           mois = tab[1]
+        %>
+        <div class="jour"><%= mois %></div>
+        <div class="mois"><%= jour %></div>
+
+      </div>
+      <div class="infoEvent">
+        <span class="nomEvent"><%= evenement.nom %></span><br/>
+        <span class="dateEvent"><%= evenement.date.to_date.to_formatted_s(:rfc822) %></span> &nbsp; | &nbsp;Au <span class="endroitEvent"><%= evenement.endroit.nom %></span>
+        &nbsp;&nbsp;&nbsp;<span id="btn" class="btn" style="display: none;" rel="<%= evenement.endroit_id%>"><a id="msg" rel="ab">&nbsp;&nbsp;&nbsp;Abonner&nbsp;&nbsp;&nbsp;</a></span><br/>
+        <span class="descEvent"><%= evenement.description %></span><br/>
+      </div>
+      <div class="imageEvent"></div>
+
+      <div id="share" style="display: none;">
+        <ul>
+          <li class="facebook"><div class="fb-like" data-href="" data-text="L'evenement de &nbsp;<%= evenement.user.login %> sur Loukhewtay" data-send="false" data-layout="boutton_count" data-width="150" data-show-faces="false" data-action="like" data-colorscheme="light"></div></li>
+          <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-text="L'evenement de&nbsp;<%= evenement.user.login %> sur Loukhewtay" data-url="" data-via="louxewtay" data-lang="fr" data-hashtags="louxewtay"  ></a></li>
+          <li class="google"><g:plusone></g:plusone></li>
+          <li><div class="joieButton" rev="" rel="<%= evenement.id%>"><img src="/assets/aime.png" alt="C cool"></div></li>
+        </ul>
+      </div>
+    </div>
+<% end %>
+
+<br />

@@ -1,0 +1,21 @@
+<%= form_for(@categorie_endroit) do |f| %>
+  <% if @categorie_endroit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@categorie_endroit.errors.count, "error") %> prohibited this categorie_endroit from being saved:</h2>
+
+      <ul>
+      <% @categorie_endroit.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :libelle %><br />
+    <%= f.text_field :libelle %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nom:</b>
+  <%= @endroit.nom %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @endroit.description %>
+</p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @endroit.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%= @endroit.longitude %>
+</p>
+
+<p>
+  <b>Categorieendroit:</b>
+  <%= @endroit.categorieEndroit_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_endroit_path(@endroit) %> |
+<%= link_to 'Back', endroits_path %>

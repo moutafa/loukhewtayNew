@@ -1,0 +1,31 @@
+<h1>Listing endroits</h1>
+
+<table>
+  <tr>
+    <th>Nom</th>
+    <th>Description</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th>Categorieendroit</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @endroits.each do |endroit| %>
+  <tr>
+    <td><%= endroit.nom %></td>
+    <td><%= endroit.description %></td>
+    <td><%= endroit.latitude %></td>
+    <td><%= endroit.longitude %></td>
+    <td><%= endroit.categorieEndroit_id %></td>
+    <td><%= link_to 'Show', endroit %></td>
+    <td><%= link_to 'Edit', edit_endroit_path(endroit) %></td>
+    <td><%= link_to 'Destroy', endroit, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Endroit', new_endroit_path %>

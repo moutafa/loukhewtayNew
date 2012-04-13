@@ -1,0 +1,23 @@
+<h1>Listing categorie_events</h1>
+
+<table>
+  <tr>
+    <th>Libelle</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @categorie_events.each do |categorie_event| %>
+  <tr>
+    <td><%= categorie_event.libelle %></td>
+    <td><%= link_to 'Show', categorie_event %></td>
+    <td><%= link_to 'Edit', edit_categorie_event_path(categorie_event) %></td>
+    <td><%= link_to 'Destroy', categorie_event, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Categorie event', new_categorie_event_path %>

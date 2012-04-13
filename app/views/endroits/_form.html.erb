@@ -1,0 +1,62 @@
+<%= form_for(@endroit) do |f| %>
+  <% if @endroit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@endroit.errors.count, "error") %> prohibited this endroit from being saved:</h2>
+
+      <ul>
+      <% @endroit.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nom %><br />
+    <%= f.text_field :nom %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :rows=>5 %>
+  </div>
+  <div class="field">
+    <%= f.label :latitude %><br />
+    <%= f.text_field :latitude %>
+  </div>
+  <div class="field">
+    <%= f.label :longitude %><br />
+    <%= f.text_field :longitude %>
+  </div>
+  <div class="field">
+    <%= f.label :categorie_Endroit %><br />
+    <%= f.collection_select(:categorieEndroit_id, CategorieEndroit.all, :id, :libelle) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<h3 class="centre">Tapez ci-dessous vos coordonnées</h3>
+
+<div class="centre">
+  <form action="#" onSubmit="showAddress(this.address.value); return false">
+    <p>
+      <input type="text" size="60" name="address" value="Dakar" />
+      <input type="submit" value="Chercher!" />
+    </p>
+  </form>
+  <table  bgcolor="#FFFFCC" width="300">
+    <tr>
+      <td><b>Latitude</b></td>
+      <td><b>Longitude</b></td>
+    </tr>
+    <tr>
+      <td id="lat"></td>
+      <td id="lng"></td>
+    </tr>
+  </table>
+  <br/>
+  <div align="center" id="map" style="width: 490px; height: 300px"><br/></div>
+  <br />
+
+</div>

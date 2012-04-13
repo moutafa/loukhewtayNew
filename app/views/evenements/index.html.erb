@@ -1,0 +1,35 @@
+<h1>Listing evenements</h1>
+
+<% @evenements.each do |evenement| %>
+      <% if evenement.user.idfacebook
+           @id = evenement.user.idfacebook
+           url = "https://graph.facebook.com/"+@id.to_s+"/picture"
+         else
+           url = "/images/profile.jpg"
+         end
+
+      %>
+
+      <div id="evenement" onmouseover="jQuery('#share').show();" onmouseout="jQuery('#share').hide();">
+        <div class="user"><img src= <%= url %> ><br/><b><%= evenement.user.login %></b></div>
+        <div class="infoEvent">
+          <span class="nomEvent"><%= evenement.nom %></span><br/>
+          <span class="dateEvent"><%= evenement.date.to_date.to_formatted_s(:rfc822) %></span> &nbsp; | &nbsp;Au <span class="endroitEvent"><%= evenement.endroit.nom %></span><br/>
+          <span class="descEvent"><%= evenement.description %></span><br/>
+        </div>
+        <div class="imageEvent"></div>
+
+        <div id="share" style="display: none;">
+            <ul>
+                <li class="facebook"><div class="fb-like" data-href="" data-text="L'evenement de &nbsp;<%= evenement.user.login %> sur Loukhewtay" data-send="false" data-layout="boutton_count" data-width="100" data-show-faces="true" data-action="like" data-colorscheme="light"></div></li>
+                <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-text="L'evenement de&nbsp;<%= evenement.user.login %> sur Loukhewtay" data-url="" data-via="louxewtay" data-lang="fr" data-hashtags="louxewtay" data-count="horizontal"></a></li>
+                <li class="google"><g:plusone size="tall"></g:plusone></li>
+                <li><div class="joieButton" rev="" rel="<%= evenement.id%>"></div></li>
+            </ul>
+        </div>
+      </div>
+<% end %>
+
+<br />
+
+<%= link_to 'New Evenement', new_evenement_path %>

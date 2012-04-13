@@ -1,0 +1,2 @@
+module CategorieEventsHelper
+end

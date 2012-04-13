@@ -1,0 +1,23 @@
+<h1>Listing categorie_endroits</h1>
+
+<table>
+  <tr>
+    <th>Libelle</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @categorie_endroits.each do |categorie_endroit| %>
+  <tr>
+    <td><%= categorie_endroit.libelle %></td>
+    <td><%= link_to 'Show', categorie_endroit %></td>
+    <td><%= link_to 'Edit', edit_categorie_endroit_path(categorie_endroit) %></td>
+    <td><%= link_to 'Destroy', categorie_endroit, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Categorie endroit', new_categorie_endroit_path %>

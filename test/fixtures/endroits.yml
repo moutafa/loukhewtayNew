@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nom: MyString
+  description: MyText
+  latitude: MyString
+  longitude: MyString
+  categorieEndroit_id: 1
+
+two:
+  nom: MyString
+  description: MyText
+  latitude: MyString
+  longitude: MyString
+  categorieEndroit_id: 1
